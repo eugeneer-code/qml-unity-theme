@@ -1,0 +1,12 @@
+module Unity
+
+singleton Unity 1.0 Unity.qml
+singleton UnityTheme 1.0 UnityTheme.qml
+
+# Styles components
+UnityPaletteDefault 1.0 UnityPaletteLight.qml
+UnityPaletteDark 1.0 UnityPaletteDark.qml
+
+# Default components
+Label 1.0 Label.qml
+

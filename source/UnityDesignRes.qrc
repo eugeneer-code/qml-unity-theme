@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Unity/fonts/Inter-Black.ttf</file>
+        <file>Unity/fonts/Inter-Bold.ttf</file>
+        <file>Unity/fonts/Inter-ExtraBold.ttf</file>
+        <file>Unity/fonts/Inter-ExtraLight.ttf</file>
+        <file>Unity/fonts/Inter-Light.ttf</file>
+        <file>Unity/fonts/Inter-Medium.ttf</file>
+        <file>Unity/fonts/Inter-Regular.ttf</file>
+        <file>Unity/fonts/Inter-SemiBold.ttf</file>
+        <file>Unity/fonts/Inter-Thin.ttf</file>
+        <file>Unity/fonts/Inter.ttf</file>
+        <file>Unity/qmldir</file>
+        <file>Unity/Unity.qml</file>
+        <file>Unity/UnityTheme.qml</file>
+        <file>Unity/UnityPaletteLight.qml</file>
+        <file>Unity/UnityPaletteDark.qml</file>
+        <file>Unity/Label.qml</file>
+    </qresource>
+</RCC>
