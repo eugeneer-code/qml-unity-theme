@@ -4,12 +4,10 @@ using namespace unity;
 
 UnityStyle::UnityStyle(QObject* parent)
     : QObject(parent),
-    _textStyle(3),
-    _boldText(false),
+    _textStyle(2),
     _controlType(0),
     _controlSize(1),
-    _buttonForm(0),
-    _hasError(false)
+    _showFocus(false)
 {
 }
 
@@ -27,17 +25,6 @@ void UnityStyle::setTextStyle(int style)
 {
     _textStyle = style;
     emit tsChanged();
-}
-
-bool UnityStyle::boldText() const
-{
-    return _boldText;
-}
-
-void UnityStyle::setBoldText(bool bold)
-{
-    _boldText = bold;
-    emit btChanged();
 }
 
 int UnityStyle::controlType() const
@@ -62,24 +49,13 @@ void UnityStyle::setControlSize(int size)
     emit csChanged();
 }
 
-int UnityStyle::buttonForm() const
+bool UnityStyle::showFocus() const
 {
-    return _buttonForm;
+    return _showFocus;
 }
 
-void UnityStyle::setButtonForm(int form)
+void UnityStyle::setShowFocus(bool show)
 {
-    _buttonForm = form;
-    emit bfChanged();
-}
-
-bool UnityStyle::hasError() const
-{
-    return _hasError;
-}
-
-void UnityStyle::setHasError(bool error)
-{
-    _hasError = error;
-    emit heChanged();
+    _showFocus = show;
+    emit sfChanged();
 }

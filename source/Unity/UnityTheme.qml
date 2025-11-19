@@ -5,19 +5,13 @@ QtObject {
     id: theme
     property int currentTheme: Unity.Theme.Dark
 
-    property color projectColor: "#0071B2"
-
-    property var darkPalette: UnityPaletteDark {
-        project: projectColor
-    }
-    property var lightPalette: UnityPaletteLight {
-        project: projectColor
-    }
+    property var darkPalette: UnityPaletteDark {}
+    property var lightPalette: UnityPaletteLight {}
 
     property var palette: {
         switch(currentTheme){
             case Unity.Theme.Dark: return darkPalette
-            case Consta.Theme.Light: return lightPalette
+            case Unity.Theme.Light: return lightPalette
             default: return undefined
         }
     }
