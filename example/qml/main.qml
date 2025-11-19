@@ -14,12 +14,13 @@ Window {
 
     // Sidebar model
     property var pages: [
-        {name: "Typography"}
+        {name: "Typography"},
+        {name: "Buttons"}
     ]
 
     Component.onCompleted: {
-        listView.currentIndex = 0
-        stack.currentIndex = 0
+        listView.currentIndex = 1
+        stack.currentIndex = 1
     }
 
     Item {
@@ -70,5 +71,6 @@ Window {
         currentIndex: 0
 
         Typography{}
+        Buttons{}
     }
 }

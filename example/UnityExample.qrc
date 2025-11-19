@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>qml/main.qml</file>
         <file>qml/Pages/Typography.qml</file>
+        <file>qml/Pages/Buttons.qml</file>
+        <file>icons/centered.svg</file>
     </qresource>
 </RCC>

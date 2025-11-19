@@ -11,10 +11,12 @@
         <file>Unity/fonts/Inter-Thin.ttf</file>
         <file>Unity/fonts/Inter.ttf</file>
         <file>Unity/qmldir</file>
+        <file>Unity/custom/UnityIcon.qml</file>
         <file>Unity/Unity.qml</file>
         <file>Unity/UnityTheme.qml</file>
         <file>Unity/UnityPaletteLight.qml</file>
         <file>Unity/UnityPaletteDark.qml</file>
         <file>Unity/Label.qml</file>
+        <file>Unity/Button.qml</file>
     </qresource>
 </RCC>
