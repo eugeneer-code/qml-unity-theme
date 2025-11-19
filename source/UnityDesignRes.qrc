@@ -18,5 +18,8 @@
         <file>Unity/UnityPaletteDark.qml</file>
         <file>Unity/Label.qml</file>
         <file>Unity/Button.qml</file>
+        <file>Unity/CheckBox.qml</file>
+        <file>Unity/icons/checkbox_intermediate.svg</file>
+        <file>Unity/icons/checkbox_check.svg</file>
     </qresource>
 </RCC>

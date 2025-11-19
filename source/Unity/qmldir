@@ -10,6 +10,7 @@ UnityPaletteDark 1.0 UnityPaletteDark.qml
 # Default components
 Label 1.0 Label.qml
 Button 1.0 Button.qml
+CheckBox 1.0 CheckBox.qml
 
 # Custom components
 UnityIcon 1.0 custom/UnityIcon.qml
