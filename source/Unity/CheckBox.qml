@@ -30,9 +30,9 @@ T.CheckBox {
         border.width: 1
         border.color: {
             if(control.visualFocus) return UnityTheme.palette.inputBorderFocus
-            if(control.pressed) return UnityTheme.palette.inputBorderAccent
+            if(control.pressed) return UnityTheme.palette.inputBorderFocus
             if(control.hovered) return UnityTheme.palette.inputBorderHover
-            return UnityTheme.palette.inputBorderHover
+            return UnityTheme.palette.inputBorder
         }
         radius: 2
 
