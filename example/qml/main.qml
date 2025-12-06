@@ -15,7 +15,8 @@ Window {
     // Sidebar model
     property var pages: [
         {name: "Typography"},
-        {name: "Buttons"}
+        {name: "Buttons"},
+        {name: "Inputs"}
     ]
 
     Component.onCompleted: {
@@ -50,7 +51,6 @@ Window {
                 left: parent.left
                 right: parent.right
             }
-            height: 40
             model: ["Dark", "Light"]
             onActivated: (index) => { UnityTheme.currentTheme = index }
         }
@@ -72,5 +72,6 @@ Window {
 
         Typography{}
         Buttons{}
+        Inputs{}
     }
 }

@@ -1,46 +1,46 @@
 import QtQuick
+import QtQuick.Window
 import QtQuick.Controls.impl
 import QtQuick.Templates as T
-import QtQuick.Controls
-import Consta
+import QtQuick.Controls.Material
+import QtQuick.Controls.Material.impl
+import Unity
+
 
 T.ComboBox {
     id: control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitContentWidth + leftPadding + rightPadding)
-    implicitHeight: internal.height
+    implicitWidth: 160
+    implicitHeight: 18
 
-    leftPadding: internal.padding + (!control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
-    rightPadding: internal.padding + (control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
-    selectTextByMouse: true
+    focusPolicy: Qt.TabFocus
 
-    QtObject {
-        id: internal
-        property int height: 18
-        property int padding: 5
-    }
+    padding: 6
+    leftPadding: padding + (!control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
+    rightPadding: padding + (control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
 
-    delegate: ItemDelegate {
-        //ConstaStyle.controlSize: control.ConstaStyle.controlSize
+    delegate: MenuItem {
+        required property var model
+        required property int index
+
         width: ListView.view.width
-        text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
-        highlighted: control.currentIndex === index
+        text: model[control.textRole]
+        //Material.foreground: control.currentIndex === index ? ListView.view.contentItem.Material.accent : ListView.view.contentItem.Material.foreground
+        highlighted: control.highlightedIndex === index
         hoverEnabled: control.hoverEnabled
     }
 
     indicator: UnityIcon {
-        x: control.width - (internal.height + width) / 2
+        x: control.mirrored ? control.padding : control.width - width - control.padding
         y: control.topPadding + (control.availableHeight - height) / 2
+        size: 8
         color: UnityTheme.palette.labelText
-        size: 12
-        source: "qrc:/Consta/icons/controls/combobox_arrow.svg"
-        rotation: control.popup.visible ? 180 : 0
+        source: "qrc:/Unity/icons/combobox_arrow.svg"
     }
 
     contentItem: T.TextField {
-        leftPadding: 0
-        rightPadding: 1
+        leftPadding: 4
+        rightPadding: 20
 
         text: control.editable ? control.editText : control.displayText
 
@@ -50,90 +50,71 @@ T.ComboBox {
         inputMethodHints: control.inputMethodHints
         validator: control.validator
         selectByMouse: control.selectTextByMouse
-        verticalAlignment: Text.AlignVCenter
-        color: control.enabled ? ConstaTheme.palette.control_typo_default : ConstaTheme.palette.control_typo_disable
-        selectionColor: ConstaTheme.palette.typo_brand
-        selectedTextColor: ConstaTheme.palette.control_typo_primary
-        placeholderTextColor: control.enabled ? ConstaTheme.palette.control_typo_placeholder : ConstaTheme.palette.control_typo_disable
-        font.family: "Inter"
-        font.pixelSize: switch(control.ConstaStyle.controlSize){
-            case Consta.ControlSize.XS: return 12
-            case Consta.ControlSize.S: return 14
-            case Consta.ControlSize.M: return 16
-            case Consta.ControlSize.L: return 18
-            default: return 14
-        }
 
-        background: Item{}
+        color: UnityTheme.palette.labelText
+        selectionColor: UnityTheme.palette.highlightBackground
+        selectedTextColor: UnityTheme.palette.highlightTextInactive
+        verticalAlignment: Text.AlignVCenter
+
+        cursorDelegate: CursorDelegate { }
     }
 
-    background: RoundedRectangle {
-        implicitWidth: 200
-        implicitHeight: internal.height
-        radiusTL: switch(control.ConstaStyle.buttonForm){
-            case Consta.ButtonForm.Default:
-            case Consta.ButtonForm.DefaultBrick: return 4;
-            case Consta.ButtonForm.Round:
-            case Consta.ButtonForm.RoundBrick: return internal.height/2
-            default: return 0;
+    background: Item {
+        Rectangle {
+            anchors.fill: parent
+            radius: 3
+            gradient: {
+                if(control.visualFocus) return null
+                //if(control.pressed) return UnityTheme.palette.borderPressedGradient
+                return UnityTheme.palette.borderGradient
+            }
+            border.width: control.activeFocus ? 1 : 0
+            border.color: UnityTheme.palette.buttonBorderAccentFocus
         }
-        radiusBL: switch(control.ConstaStyle.buttonForm){
-            case Consta.ButtonForm.Default:
-            case Consta.ButtonForm.DefaultBrick: return 4;
-            case Consta.ButtonForm.Round:
-            case Consta.ButtonForm.RoundBrick: return internal.height/2
-            default: return 0;
+        Rectangle {
+            anchors {
+                fill: parent
+                margins: 1
+            }
+            radius: 2
+            color: {
+                if(control.hovered) return UnityTheme.palette.dropdownBackgroundHover
+                //if(control.visualFocus) return UnityTheme.palette.buttonBackgroundFocus
+                return UnityTheme.palette.dropdownBackground
+            }
         }
-        radiusTR: switch(control.ConstaStyle.buttonForm){
-            case Consta.ButtonForm.Default:
-            case Consta.ButtonForm.BrickDefault: return 4;
-            case Consta.ButtonForm.Round:
-            case Consta.ButtonForm.BrickRound: return internal.height/2
-            default: return 0;
-        }
-        radiusBR: switch(control.ConstaStyle.buttonForm){
-            case Consta.ButtonForm.Default:
-            case Consta.ButtonForm.BrickDefault: return 4;
-            case Consta.ButtonForm.Round:
-            case Consta.ButtonForm.BrickRound: return internal.height/2
-            default: return 0;
-        }
-        color: control.enabled ? ConstaTheme.palette.control_bg_default : ConstaTheme.palette.control_bg_disable
-        borderColor: {
-                    if(!control.enabled) return ConstaTheme.palette.control_bg_border_disable
-                    if(control.activeFocus) return ConstaTheme.palette.control_bg_border_focus
-                    if(control.hovered) return ConstaTheme.palette.control_bg_border_default_hover
-                    return ConstaTheme.palette.control_bg_border_default
-                }
-        borderWidth: 1
     }
 
     popup: T.Popup {
-        y: control.height
+        y: control.editable ? control.height - 5 : 0
         width: control.width
-        height: Math.min(contentItem.implicitHeight, control.Window.height - topMargin - bottomMargin)
+        height: Math.min(contentItem.implicitHeight + verticalPadding * 2, control.Window.height - topMargin - bottomMargin)
+        transformOrigin: Item.Top
+        topMargin: 12
+        bottomMargin: 12
+        verticalPadding: 8
 
-        contentItem: Item{
-            implicitHeight: listView.contentHeight + 2
-            ListView {
-                id: listView
-                clip: true
-                width: parent.width - 2
-                height: parent.height - 2
-                x: 1
-                y: 1
-                model: control.delegateModel
-                currentIndex: control.highlightedIndex
-                highlightMoveDuration: 0
-                T.ScrollIndicator.vertical: ScrollIndicator { }
-            }
+        enter: Transition {
+            // grow_fade_in
+            NumberAnimation { property: "scale"; from: 0.9; easing.type: Easing.OutQuint; duration: 220 }
+            NumberAnimation { property: "opacity"; from: 0.0; easing.type: Easing.OutCubic; duration: 150 }
         }
 
-        background: Rectangle {
-            color: ConstaTheme.palette.control_bg_default
-            border.width: 1
-            border.color: ConstaTheme.palette.control_bg_border_default
-            //radius: 4
+        exit: Transition {
+            // shrink_fade_out
+            NumberAnimation { property: "scale"; to: 0.9; easing.type: Easing.OutQuint; duration: 220 }
+            NumberAnimation { property: "opacity"; to: 0.0; easing.type: Easing.OutCubic; duration: 150 }
         }
+
+        contentItem: ListView {
+            clip: true
+            implicitHeight: contentHeight
+            model: control.delegateModel
+            currentIndex: control.highlightedIndex
+            highlightMoveDuration: 0
+
+            T.ScrollIndicator.vertical: ScrollIndicator { }
+        }
+
     }
 }

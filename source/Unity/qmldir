@@ -12,6 +12,7 @@ Label 1.0 Label.qml
 Button 1.0 Button.qml
 CheckBox 1.0 CheckBox.qml
 ComboBox 1.0 ComboBox.qml
+TextField 1.0 TextField.qml
 
 # Custom components
 UnityIcon 1.0 custom/UnityIcon.qml

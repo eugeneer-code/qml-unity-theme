@@ -116,4 +116,19 @@ QtObject {
     property color highlightTextInactive: "#FFFFFF"
     property color previewOverlayText: "#FFFFFF"
     property color windowText: "#090909"
+
+    property Gradient borderGradient: Gradient {
+        orientation: Gradient.Vertical
+        GradientStop { position: 0.0; color: UnityTheme.palette.buttonBorder }
+        GradientStop { position: 0.86; color: UnityTheme.palette.buttonBorder }
+        GradientStop { position: 0.94; color: UnityTheme.palette.buttonBorderAccent }
+        GradientStop { position: 1.0; color: UnityTheme.palette.buttonBorderAccent }
+    }
+    property Gradient borderPressedGradient: Gradient {
+        orientation: Gradient.Vertical
+        GradientStop { position: 0.0; color: UnityTheme.palette.buttonBorderPressed }
+        GradientStop { position: 0.05; color: UnityTheme.palette.buttonBorderPressed }
+        GradientStop { position: 0.11; color: UnityTheme.palette.buttonBorderAccent }
+        GradientStop { position: 1.0; color: UnityTheme.palette.buttonBorderAccent }
+    }
 }

@@ -20,7 +20,9 @@
         <file>Unity/Button.qml</file>
         <file>Unity/CheckBox.qml</file>
         <file>Unity/ComboBox.qml</file>
+        <file>Unity/TextField.qml</file>
         <file>Unity/icons/checkbox_intermediate.svg</file>
         <file>Unity/icons/checkbox_check.svg</file>
+        <file>Unity/icons/combobox_arrow.svg</file>
     </qresource>
 </RCC>
