@@ -28,7 +28,7 @@ Item {
             }
 
             TextField{
-                enabled: enabledControl.checked
+                enabled: !enabledControl.checked
             }
         }
     }

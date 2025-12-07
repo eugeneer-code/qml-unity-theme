@@ -25,9 +25,8 @@ T.TextField {
     placeholderTextColor: UnityTheme.palette.defaultText
     verticalAlignment: TextInput.AlignVCenter
 
-    //ContextMenu.menu: TextEditingContextMenu {
-    //    editor: control
-    //}
+    font.pixelSize: 12
+    font.family: "Inter"
 
     cursorDelegate: CursorDelegate { }
 
@@ -46,12 +45,15 @@ T.TextField {
         Rectangle {
             anchors.fill: parent
             radius: 3
+            color: "transparent"
             gradient: {
+                if(!control.enabled) return null
                 if(control.visualFocus || control.hovered) return null
                 return UnityTheme.palette.borderGradient
             }
-            border.width: (control.activeFocus || control.hovered) ? 1 : 0
+            border.width: (control.activeFocus || control.hovered || !control.enabled) ? 1 : 0
             border.color: {
+                if(!control.enabled) return UnityTheme.palette.inputBorder
                 if(control.visualFocus) return UnityTheme.palette.inputBorderFocus
                 if(control.hovered) return UnityTheme.palette.inputBorderHover
                 return UnityTheme.palette.inputBorder
