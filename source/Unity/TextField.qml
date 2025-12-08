@@ -54,7 +54,7 @@ T.TextField {
             border.width: (control.activeFocus || control.hovered || !control.enabled) ? 1 : 0
             border.color: {
                 if(!control.enabled) return UnityTheme.palette.inputBorder
-                if(control.visualFocus) return UnityTheme.palette.inputBorderFocus
+                if(control.activeFocus) return UnityTheme.palette.inputBorderFocus
                 if(control.hovered) return UnityTheme.palette.inputBorderHover
                 return UnityTheme.palette.inputBorder
             }
