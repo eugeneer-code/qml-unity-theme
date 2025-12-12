@@ -15,7 +15,10 @@ T.ComboBox {
 
     focusPolicy: Qt.TabFocus
 
-    padding: 6
+    opacity: enabled ? 1.0 : 0.4
+
+    topPadding: 0
+    bottomPadding: 0
     leftPadding: padding + (!control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
     rightPadding: padding + (control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
 
@@ -31,7 +34,7 @@ T.ComboBox {
     }
 
     indicator: UnityIcon {
-        x: control.mirrored ? control.padding : control.width - width - control.padding
+        x: control.mirrored ? control.rightPadding : control.width - width - control.rightPadding
         y: control.topPadding + (control.availableHeight - height) / 2
         size: 8
         color: UnityTheme.palette.labelText
@@ -45,18 +48,18 @@ T.ComboBox {
         text: control.editable ? control.editText : control.displayText
 
         enabled: control.editable
-        autoScroll: control.editable
         readOnly: control.down
         inputMethodHints: control.inputMethodHints
         validator: control.validator
         selectByMouse: control.selectTextByMouse
 
+        font.pixelSize: 12
+        font.family: "Inter"
+
         color: UnityTheme.palette.labelText
         selectionColor: UnityTheme.palette.highlightBackground
         selectedTextColor: UnityTheme.palette.highlightTextInactive
         verticalAlignment: Text.AlignVCenter
-
-        cursorDelegate: CursorDelegate { }
     }
 
     background: Item {
@@ -78,6 +81,7 @@ T.ComboBox {
             }
             radius: 2
             color: {
+                if(!control.enabled) return UnityTheme.palette.dropdownBackground
                 if(control.hovered) return UnityTheme.palette.dropdownBackgroundHover
                 //if(control.visualFocus) return UnityTheme.palette.buttonBackgroundFocus
                 return UnityTheme.palette.dropdownBackground

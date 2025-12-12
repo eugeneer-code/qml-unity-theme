@@ -45,7 +45,7 @@ T.TextField {
         Rectangle {
             anchors.fill: parent
             radius: 3
-            color: "transparent"
+            color: control.enabled ? UnityTheme.palette.inputBorder : "transparent"
             gradient: {
                 if(!control.enabled) return null
                 if(control.visualFocus || control.hovered) return null

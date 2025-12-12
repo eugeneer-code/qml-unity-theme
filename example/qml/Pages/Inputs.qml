@@ -30,6 +30,11 @@ Item {
             TextField{
                 enabled: !enabledControl.checked
             }
+
+            ComboBox {
+                model: ["Item 1", "Item 2", "Item 3"]
+                enabled: !enabledControl.checked
+            }
         }
     }
 }
