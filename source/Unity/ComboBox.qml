@@ -27,6 +27,7 @@ T.ComboBox {
         required property int index
 
         width: ListView.view.width
+        height: 18
         text: model[control.textRole]
         //Material.foreground: control.currentIndex === index ? ListView.view.contentItem.Material.accent : ListView.view.contentItem.Material.foreground
         highlighted: control.highlightedIndex === index
@@ -89,14 +90,14 @@ T.ComboBox {
         }
     }
 
-    popup: T.Popup {
+    popup: Popup {
         y: control.editable ? control.height - 5 : 0
         width: control.width
         height: Math.min(contentItem.implicitHeight + verticalPadding * 2, control.Window.height - topMargin - bottomMargin)
         transformOrigin: Item.Top
-        topMargin: 12
-        bottomMargin: 12
-        verticalPadding: 8
+        //topMargin: 12
+        //bottomMargin: 12
+        //verticalPadding: 8
 
         enter: Transition {
             // grow_fade_in

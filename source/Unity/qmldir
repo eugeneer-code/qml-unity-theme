@@ -14,6 +14,8 @@ CheckBox 1.0 CheckBox.qml
 ComboBox 1.0 ComboBox.qml
 TextField 1.0 TextField.qml
 CursorDelegate 1.0 CursorDelegate.qml
+Popup 1.0 Popup.qml
+MenuItem 1.0 MenuItem.qml
 
 # Custom components
 UnityIcon 1.0 custom/UnityIcon.qml

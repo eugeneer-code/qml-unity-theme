@@ -22,6 +22,8 @@
         <file>Unity/ComboBox.qml</file>
         <file>Unity/TextField.qml</file>
         <file>Unity/CursorDelegate.qml</file>
+        <file>Unity/Popup.qml</file>
+        <file>Unity/MenuItem.qml</file>
         <file>Unity/icons/checkbox_intermediate.svg</file>
         <file>Unity/icons/checkbox_check.svg</file>
         <file>Unity/icons/combobox_arrow.svg</file>
