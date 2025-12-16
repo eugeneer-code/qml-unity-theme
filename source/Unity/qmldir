@@ -16,6 +16,8 @@ TextField 1.0 TextField.qml
 CursorDelegate 1.0 CursorDelegate.qml
 Popup 1.0 Popup.qml
 MenuItem 1.0 MenuItem.qml
+TabBar 1.0 TabBar.qml
+TabButton 1.0 TabButton.qml
 
 # Custom components
 UnityIcon 1.0 custom/UnityIcon.qml

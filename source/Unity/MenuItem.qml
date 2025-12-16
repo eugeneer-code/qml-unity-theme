@@ -13,7 +13,6 @@ T.MenuItem {
         implicitIndicatorHeight + topPadding + bottomPadding)
 
     padding: 8
-    verticalPadding: Material.menuItemVerticalPadding
     spacing: 3
     height: 18
 

@@ -16,12 +16,13 @@ Window {
     property var pages: [
         {name: "Typography"},
         {name: "Buttons"},
-        {name: "Inputs"}
+        {name: "Inputs"},
+        {name: "Tabs"}
     ]
 
     Component.onCompleted: {
-        listView.currentIndex = 1
-        stack.currentIndex = 1
+        listView.currentIndex = 3
+        stack.currentIndex = 3
     }
 
     Item {
@@ -73,5 +74,6 @@ Window {
         Typography{}
         Buttons{}
         Inputs{}
+        Tabs{}
     }
 }
