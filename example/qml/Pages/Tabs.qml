@@ -18,6 +18,7 @@ Item {
             x: 12
             y: 12
             spacing: 12
+            width: parent.width - 24
 
             Row {
                 spacing: 12
@@ -28,12 +29,14 @@ Item {
             }
 
             TabBar {
-                width: 500
+                Layout.fillWidth: true
 
                 TabButton {
+                    width: 100
                     text: "Tab 1"
                 }
                 TabButton {
+                    width: 100
                     text: "Tab 2"
                 }
             }

@@ -1,8 +1,6 @@
 import QtQuick
 import QtQuick.Templates as T
 import QtQuick.Controls.impl
-import QtQuick.Controls.Material
-import QtQuick.Controls.Material.impl
 
 T.TabButton {
     id: control
@@ -37,18 +35,41 @@ T.TabButton {
              anchors.leftMargin: iconItem.visible ? internal.iconSize + control.spacing : 0
              horizontalAlignment: Text.AlignHCenter
              verticalAlignment: Text.AlignVCenter
+             color: UnityTheme.palette.tabText
          }
      }
 
-    background: Rectangle {
+    background: Item {
         implicitHeight: 20
         clip: true
-        color: {
-            if(control.pressed && control.hovered) return UnityTheme.palette.buttonBackgroundHoverPressed
-            if(control.pressed) return UnityTheme.palette.buttonBackgroundPressed
-            if(control.hovered) return UnityTheme.palette.buttonBackgroundHover
-            if(control.visualFocus) return UnityTheme.palette.buttonBackgroundFocus
-            return UnityTheme.palette.buttonBackground
+        Rectangle {
+            radius: 3
+            height: 23
+            width: parent.width
+            color: UnityTheme.palette.tabHighlightBackground
+            visible: control.checked
+        }
+        Rectangle {
+            radius: 3
+            height: 23
+            width: parent.width
+            y: control.checked ? 2 : 0
+            clip: true
+            color: {
+                if(control.checked) return UnityTheme.palette.tabBackgroundChecked
+                if(control.pressed) return UnityTheme.palette.tabBackground
+                if(control.hovered) return UnityTheme.palette.tabBackgroundHover
+                return UnityTheme.palette.defaultBackground
+            }
+
+            Rectangle {
+                width: 1
+                height: parent.height
+                y: 3
+                anchors.right: parent.right
+                color: UnityTheme.palette.defaultBorder
+                visible: control.checked
+            }
         }
     }
 }
