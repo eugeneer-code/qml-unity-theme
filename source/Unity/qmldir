@@ -22,3 +22,4 @@ TabButton 1.0 TabButton.qml
 # Custom components
 UnityIcon 1.0 custom/UnityIcon.qml
 UnityIconLabel 1.0 custom/UnityIconLabel.qml
+UnityColorInput 1.0 custom/UnityColorInput.qml

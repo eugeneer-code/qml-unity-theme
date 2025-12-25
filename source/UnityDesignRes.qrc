@@ -13,6 +13,7 @@
         <file>Unity/qmldir</file>
         <file>Unity/custom/UnityIcon.qml</file>
         <file>Unity/custom/UnityIconLabel.qml</file>
+        <file>Unity/custom/UnityColorInput.qml</file>
         <file>Unity/Unity.qml</file>
         <file>Unity/UnityTheme.qml</file>
         <file>Unity/UnityPaletteLight.qml</file>

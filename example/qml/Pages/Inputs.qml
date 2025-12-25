@@ -35,6 +35,26 @@ Item {
                 model: ["Item 1", "Item 2", "Item 3"]
                 enabled: !enabledControl.checked
             }
+
+            UnityColorInput {
+                text: "#45CAb9"
+                onColorSelected: (selectedColor) => {
+                    console.log("Color selected: " + selectedColor)
+                }
+            }
+            UnityColorInput {
+                text: "custom text"
+                useTextBindings: false
+                colorValue: "#4590AB"
+                onColorSelected: (selectedColor) => {
+                    text = selectedColor
+                    console.log("Color selected: " + selectedColor)
+                }
+                onTextChanged: {
+                    var col = Qt.color(text)
+                    if(col.valid) colorValue = col
+                }
+            }
         }
     }
 }
