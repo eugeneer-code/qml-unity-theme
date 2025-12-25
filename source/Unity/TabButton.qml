@@ -16,28 +16,12 @@ T.TabButton {
     icon.height: 24
 
     contentItem: Item {
-         implicitWidth: iconItem.visible ? label.implicitWidth + internal.iconSize + control.spacing : label.implicitWidth
-         implicitHeight: internal.height
-         UnityIcon {
-             id: iconItem
-             image.source: control.icon.source
-             //image.name: control.icon.name
-             color: label.color
-             anchors.verticalCenter: parent.verticalCenter
-             anchors.horizontalCenter: internal.onlyIcon ? parent.horizontalCenter : undefined
-             visible: icon.source != "" || icon.name != ""
-             size: internal.iconSize
-         }
-         Label {
-             id: label
-             text: control.text
-             anchors.fill: parent
-             anchors.leftMargin: iconItem.visible ? internal.iconSize + control.spacing : 0
-             horizontalAlignment: Text.AlignHCenter
-             verticalAlignment: Text.AlignVCenter
-             color: UnityTheme.palette.tabText
-         }
-     }
+        UnityIconLabel {
+            anchors.centerIn: parent
+            iconSource: control.icon.source
+            text: control.text
+        }
+    }
 
     background: Item {
         implicitHeight: 20

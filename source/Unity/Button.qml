@@ -14,7 +14,8 @@ T.Button {
 
     opacity: enabled ? 1.0 : 0.4
 
-    implicitWidth: internal.onlyIcon ? internal.height : contentItem.implicitWidth + leftPadding + rightPadding
+    //implicitWidth: internal.onlyIcon ? internal.height : contentItem.implicitWidth + leftPadding + rightPadding
+    implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: internal.height
 
     leftPadding: internal.padding
@@ -70,27 +71,11 @@ T.Button {
         property bool onlyIcon: control.text == ""
     }
 
-    contentItem: Item {
-        implicitWidth: iconItem.visible ? label.implicitWidth + internal.iconSize + control.spacing : label.implicitWidth
-        implicitHeight: internal.height
-        UnityIcon {
-            id: iconItem
-            image.source: control.icon.source
-            //image.name: control.icon.name
-            color: label.color
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: internal.onlyIcon ? parent.horizontalCenter : undefined
-            visible: icon.source != "" || icon.name != ""
-            size: internal.iconSize
-        }
-        Label {
-            id: label
-            text: control.text
-            anchors.fill: parent
-            anchors.leftMargin: iconItem.visible ? internal.iconSize + control.spacing : 0
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-        }
+    contentItem: UnityIconLabel {
+        iconSource: control.icon.source
+        iconSize: internal.iconSize
+        text: control.text
+        spacing: control.spacing
     }
 
     background: Item {
